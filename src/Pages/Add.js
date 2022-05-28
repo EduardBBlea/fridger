@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 const Add = () => {
-  const { hasItem, getItem, addItem, modItem } = useGlobalContext();
+  const { addItem } = useGlobalContext();
 
   const [formData, setFormData] = useState({});
 

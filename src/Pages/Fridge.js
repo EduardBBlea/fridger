@@ -1,13 +1,20 @@
 import React from "react";
+import ItemCard from "../components/ItemCard/ItemCard";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 const Fridge = () => {
-  const { items, hasItem, getItem, addItem, modItem } = useGlobalContext();
+  const { items } = useGlobalContext();
 
   return (
-    <div>
+    <div className="cards">
       {items.map((item) => (
-        <h2 key={item.id}>{item.item}</h2>
+        <ItemCard
+          item={item.item}
+          id={item.id}
+          key={item.id}
+          category={item.category}
+          expiry={item.expiry}
+        />
       ))}
     </div>
   );
