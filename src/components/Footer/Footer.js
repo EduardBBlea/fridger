@@ -8,7 +8,7 @@ const Footer = () => {
     <div id="footer">
       <div id="link">
         <Link to="/fridge">
-          <img id="fridge" src="./img/fridge.svg" alt="fridge icon" />
+          <img id="fridge" src=" ./img/fridge.svg" alt="fridge icon" />
           FRIDGE CONTENTS
         </Link>
       </div>
