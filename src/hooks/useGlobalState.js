@@ -9,6 +9,14 @@ const useGlobalState = () => {
     setItems([...items, item]);
   };
 
+  const removeItem = (id) => {
+    setItems(
+      items.filter((item) => {
+        return item.id !== id;
+      })
+    );
+  };
+
   const getItem = (id) => {
     return items.find((item) => {
       return item.id === parseInt(id);
@@ -35,6 +43,7 @@ const useGlobalState = () => {
     getItem,
     hasItem,
     modItem,
+    removeItem,
   };
 };
 
