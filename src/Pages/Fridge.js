@@ -7,15 +7,19 @@ const Fridge = () => {
 
   return (
     <div className="cards">
-      {items.map((item) => (
-        <ItemCard
-          item={item.item}
-          id={item.id}
-          key={item.id}
-          category={item.category}
-          expiry={item.expiry}
-        />
-      ))}
+      {items.length > 0 ? (
+        items.map((item) => (
+          <ItemCard
+            item={item.item}
+            id={item.id}
+            key={item.id}
+            category={item.category}
+            expiry={item.expiry}
+          />
+        ))
+      ) : (
+        <h2>There's no items in your fridge!</h2>
+      )}
     </div>
   );
 };

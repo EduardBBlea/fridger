@@ -3,45 +3,52 @@ import React, { useState } from "react";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 const Add = () => {
-  const { addItem } = useGlobalContext();
+  const { addItem, generateId } = useGlobalContext();
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    id: generateId(),
+    item: "",
+    category: "",
+    expiry: "",
+  });
 
-  const handleChange = (event) => {
+  const onChange = (event) => {
     setFormData({
       ...formData,
-      id: Math.random(),
       [event.target.name]: event.target.value.trim(),
     });
   };
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     addItem(formData);
+    setFormData({ id: generateId(), item: "", category: "", expiry: "" });
   };
 
   return (
     <div id="add-form">
       <h1>Add a new item to the fridge:</h1>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
+      <form onSubmit={onSubmit}>
+        <div>
           <label htmlFor="item">
-            <p>Item:</p>
+            <p>Item name:</p>
             <input
+              value={formData.item}
               type="text"
               name="item"
-              id="item"
               required
-              onChange={handleChange}
+              onChange={onChange}
             />
           </label>
+        </div>
+        <div>
           <label htmlFor="category">
             <p>Category:</p>
             <select
+              value={formData.category}
               name="category"
-              id="category"
               required
-              onChange={handleChange}
+              onChange={onChange}
             >
               <option value=""></option>
               <option value="dairy">Eggs & dairy</option>
@@ -54,17 +61,19 @@ const Add = () => {
               <option value="vegetables">Vegetables</option>
             </select>
           </label>
+        </div>
+        <div>
           <label htmlFor="expiry">
             <p>Expiry Date:</p>
             <input
+              value={formData.expiry}
               type="date"
               name="expiry"
-              id="expiry"
               required
-              onChange={handleChange}
+              onChange={onChange}
             />
           </label>
-        </fieldset>
+        </div>
 
         <input type="submit" value="Submit" />
       </form>

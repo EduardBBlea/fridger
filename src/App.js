@@ -12,7 +12,7 @@ import Fridge from "./Pages/Fridge";
 import Recipes from "./Pages/Recipes";
 import NotFound from "./Pages/NotFound";
 
-import "./App.css";
+import "./App.scss";
 
 const App = () => {
   const globalState = useGlobalState();

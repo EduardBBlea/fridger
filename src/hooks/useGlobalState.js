@@ -33,6 +33,12 @@ const useGlobalState = () => {
     setItems([...items]);
   };
 
+  const generateId = () =>
+    String(Date.now().toString(32) + Math.random().toString(16)).replace(
+      /\./g,
+      ""
+    );
+
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
@@ -44,6 +50,7 @@ const useGlobalState = () => {
     hasItem,
     modItem,
     removeItem,
+    generateId,
   };
 };
 
