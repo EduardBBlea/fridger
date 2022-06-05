@@ -1,0 +1,17 @@
+#item-preview-card {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 1rem;
+    p{
+        font-size: .8rem;
+    }
+    #category-group{
+       display: flex;
+       justify-content: space-between;
+       img{
+           max-height: 5rem;
+          
+       }
+    }
+    
+}
