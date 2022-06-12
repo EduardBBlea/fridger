@@ -17,7 +17,7 @@ const Add = () => {
   const onChange = (event) => {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value.trim(),
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -79,7 +79,7 @@ const Add = () => {
               </label>
             </div>
 
-            <input type="submit" value="Submit" />
+            <input id="add-button" type="submit" value="Add" />
           </form>
         </div>
         <div id="item-preview">

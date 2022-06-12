@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../contexts/GlobalContext";
 import "./ItemCard.scss";
 
 const ItemCard = ({ id, item, category, expiry }) => {
-  const { getItem, removeItem } = useGlobalContext();
+  const { removeItem } = useGlobalContext();
 
   const daysLeft = (expiry) => {
     let actualDate = new Date();
@@ -21,13 +21,12 @@ const ItemCard = ({ id, item, category, expiry }) => {
   return (
     <div className="card">
       <div className="item-info">
-        <button onClick={handleRemoveItem}>x</button>
+        <button onClick={handleRemoveItem}>X</button>
         <h4>{item}</h4>
         <p>Category: {category}</p>
-        <p>Expiry date: {daysLeft(expiry)}</p>
-        <p>{id}</p>
+        <p>Expiry in: {daysLeft(expiry)} days</p>
       </div>
-      <img src={`./img/${category}.jpg`} alt="category image" />
+      <img src={`./img/${category}.jpg`} alt="category" />
     </div>
   );
 };

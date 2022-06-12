@@ -1,17 +1,29 @@
 #item-preview-card {
+    width: 100%;
+    height: 71%;
     border: 1px solid lightgray;
     border-radius: 10px;
     padding: 1rem;
+    display: flex;
+    gap: .5rem;
     p{
         font-size: .8rem;
     }
-    #category-group{
+    #info-group{
+        height: 100%;
+       width: 50%;
        display: flex;
-       justify-content: space-between;
-       img{
-           max-height: 5rem;
-          
+       flex-direction: column;
+       justify-content: space-evenly;
+       span{
+           text-decoration: underline;
        }
     }
-    
+    #preview-card-img{
+        width: 50%;
+        img{
+            max-height: 100%;
+        }
+    }
+
 }
