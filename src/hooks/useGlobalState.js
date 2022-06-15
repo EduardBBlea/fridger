@@ -43,6 +43,14 @@ const useGlobalState = () => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
+  const daysLeft = (expiry) => {
+    let actualDate = new Date();
+    let expiryDate = new Date(expiry);
+    return Math.ceil(
+      (expiryDate.getTime() - actualDate.getTime()) / (1000 * 3600 * 24)
+    );
+  };
+
   return {
     items,
     addItem,
@@ -51,6 +59,7 @@ const useGlobalState = () => {
     modItem,
     removeItem,
     generateId,
+    daysLeft,
   };
 };
 

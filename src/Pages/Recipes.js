@@ -7,17 +7,25 @@ import useFetch from "../hooks/useFetch";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 const Recipes = () => {
-  const { items } = useGlobalContext();
+  const { items, daysLeft } = useGlobalContext();
 
   const { load, response, error, isLoading } = useFetch({
-    fetchFn: () => fetchRecipes(),
+    fetchFn: (items) => fetchRecipes(items),
     immediate: false,
   });
 
   const [recipes, setRecipes] = useState(null);
 
   useEffect(() => {
-    load();
+    const itemsToExpireSoon = [];
+
+    items.forEach((item) => {
+      if (daysLeft(item.expiry) <= 2) {
+        itemsToExpireSoon.push(item.item.toLowerCase());
+      }
+    });
+
+    load(itemsToExpireSoon);
   }, []);
 
   useEffect(() => {
@@ -34,7 +42,13 @@ const Recipes = () => {
     return <h1>The data is loading...</h1>;
   }
   console.log(recipes);
-  return <div>recipes</div>;
+  return (
+    <div>
+      {recipes.hits.map((item) => {
+        return <h1> {item.recipe.label}</h1>;
+      })}
+    </div>
+  );
 };
 
 export default Recipes;

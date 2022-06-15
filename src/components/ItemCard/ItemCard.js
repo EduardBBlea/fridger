@@ -4,15 +4,7 @@ import { useGlobalContext } from "../../contexts/GlobalContext";
 import "./ItemCard.scss";
 
 const ItemCard = ({ id, item, category, expiry }) => {
-  const { removeItem } = useGlobalContext();
-
-  const daysLeft = (expiry) => {
-    let actualDate = new Date();
-    let expiryDate = new Date(expiry);
-    return Math.ceil(
-      (expiryDate.getTime() - actualDate.getTime()) / (1000 * 3600 * 24)
-    );
-  };
+  const { removeItem, daysLeft } = useGlobalContext();
 
   const handleRemoveItem = () => {
     if (window.confirm(`Delete ${item} ?`)) removeItem(id);
