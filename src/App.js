@@ -22,13 +22,15 @@ const App = () => {
       <BrowserRouter>
         <div id="main-wrapper">
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/add" element={<Add />}></Route>
-            <Route path="/fridge" element={<Fridge />}></Route>
-            <Route path="/recipes" element={<Recipes />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
-          </Routes>
+          <div id="container">
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/add" element={<Add />}></Route>
+              <Route path="/fridge" element={<Fridge />}></Route>
+              <Route path="/recipes" element={<Recipes />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+            </Routes>
+          </div>
           <Footer />
         </div>
       </BrowserRouter>

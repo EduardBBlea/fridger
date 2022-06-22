@@ -26,7 +26,7 @@ const Recipes = () => {
     });
 
     load(itemsToExpireSoon);
-  }, []);
+  }, [items]);
 
   useEffect(() => {
     if (response) {
