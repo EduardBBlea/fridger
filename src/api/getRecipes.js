@@ -1,14 +1,15 @@
-import { RECIPE_SEARCH_API, APP_ID, APP_KEY } from "./config";
+import { RECIPE_SEARCH_URL, APP_ID, APP_KEY } from "./config";
 
-const fetchRecipes = (items = []) => {
-  console.log("items from call", items);
-  let itemsNamesString = "";
-  items.forEach((itemName) => {
-    itemsNamesString += `&q=${itemName}&`;
-  });
-  return fetch(
-    `${RECIPE_SEARCH_API + itemsNamesString + APP_ID + APP_KEY}`
-  ).then((response) => {
+const fetchRecipes = (items = "") => {
+  console.log(items);
+  if (items.length > 0) {
+    let Url = new URL(RECIPE_SEARCH_URL);
+    Url.searchParams.append("q", items);
+    return fetch(Url + APP_ID + APP_KEY).then((response) => {
+      return response.json();
+    });
+  }
+  return fetch(RECIPE_SEARCH_URL + APP_ID + APP_KEY).then((response) => {
     return response.json();
   });
 };

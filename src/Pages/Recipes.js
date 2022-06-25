@@ -17,11 +17,11 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState(null);
 
   useEffect(() => {
-    const itemsToExpireSoon = [];
+    let itemsToExpireSoon = "";
 
     items.forEach((item) => {
       if (daysLeft(item.expiry) <= 2) {
-        itemsToExpireSoon.push(item.item.toLowerCase());
+        itemsToExpireSoon += `${item.item.toLowerCase()} `;
       }
     });
 
@@ -45,7 +45,7 @@ const Recipes = () => {
   return (
     <div>
       {recipes.hits.map((item) => {
-        return <h1> {item.recipe.label}</h1>;
+        return <h1>w </h1>;
       })}
     </div>
   );

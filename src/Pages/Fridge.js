@@ -6,7 +6,7 @@ const Fridge = () => {
   const { items } = useGlobalContext();
 
   return (
-    <div className="cards">
+    <div id="cards">
       {items.length > 0 ? (
         items.map((item) => (
           <ItemCard

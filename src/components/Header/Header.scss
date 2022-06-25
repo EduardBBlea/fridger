@@ -7,20 +7,23 @@
     border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
     flex-shrink: 0;
-      #link {
+
+    #link {
         max-width: 5.5rem;
         margin: auto;
         text-align: center;
         padding: .2rem;
-            img{
+
+        img{
           max-width: 70%;
           margin: auto;
           padding: .2rem;
-      }
-            a:hover{
+            }
+            
+        a:hover{
           color: #4E944F;
-    }
-  }
+            }
+      }
 }
 
 
