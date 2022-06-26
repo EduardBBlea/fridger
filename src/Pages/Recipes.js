@@ -6,6 +6,8 @@ import useFetch from "../hooks/useFetch";
 
 import { useGlobalContext } from "../contexts/GlobalContext";
 
+import RecipeCard from "../components/RecipeCard/RecipeCard";
+
 const Recipes = () => {
   const { items, expiringItems } = useGlobalContext();
 
@@ -44,9 +46,13 @@ const Recipes = () => {
   console.log(recipes);
   return (
     <div>
-      {recipes.hits.map((item) => {
-        return <h1>w </h1>;
-      })}
+      <p>
+        It seems you have {expiringItems.length} items going off soon, care to
+        try them on these recipes?{" "}
+      </p>
+      {recipes.hits.map((item) => (
+        <RecipeCard recipe={item.recipe} key={recipes.hits.indexOf(item)} />
+      ))}
     </div>
   );
 };
