@@ -7,7 +7,7 @@ import useFetch from "../hooks/useFetch";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 const Recipes = () => {
-  const { items, daysLeft } = useGlobalContext();
+  const { items, expiringItems } = useGlobalContext();
 
   const { load, response, error, isLoading } = useFetch({
     fetchFn: (items) => fetchRecipes(items),
@@ -18,21 +18,21 @@ const Recipes = () => {
 
   useEffect(() => {
     let itemsToExpireSoon = "";
-
-    items.forEach((item) => {
-      if (daysLeft(item.expiry) <= 2) {
-        itemsToExpireSoon += `${item.item.toLowerCase()} `;
-      }
+    expiringItems.forEach((item) => {
+      itemsToExpireSoon += `${item.item.toLowerCase()} `;
     });
-
     load(itemsToExpireSoon);
-  }, [items]);
+  }, [expiringItems]);
 
   useEffect(() => {
     if (response) {
       setRecipes(response);
     }
   }, [response]);
+
+  if (items.length === 0) {
+    return <h1>No items in the fridge</h1>;
+  }
 
   if (error) {
     return <h1>There is a network error.</h1>;

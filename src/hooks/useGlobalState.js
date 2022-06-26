@@ -5,6 +5,20 @@ const useGlobalState = () => {
     JSON.parse(localStorage.getItem("items")) || []
   );
 
+  const daysLeft = (expiry) => {
+    let actualDate = new Date();
+    let expiryDate = new Date(expiry);
+    return Math.ceil(
+      (expiryDate.getTime() - actualDate.getTime()) / (1000 * 3600 * 24)
+    );
+  };
+
+  const [expiringItems, setExpiringItems] = useState(
+    items.filter((item) => {
+      return daysLeft(item.expiry) <= 2;
+    })
+  );
+
   const addItem = (item) => {
     setItems([...items, item]);
   };
@@ -43,16 +57,9 @@ const useGlobalState = () => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
-  const daysLeft = (expiry) => {
-    let actualDate = new Date();
-    let expiryDate = new Date(expiry);
-    return Math.ceil(
-      (expiryDate.getTime() - actualDate.getTime()) / (1000 * 3600 * 24)
-    );
-  };
-
   return {
     items,
+    expiringItems,
     addItem,
     getItem,
     hasItem,
