@@ -1,0 +1,17 @@
+#recipe-card {
+    display: flex;
+    gap: .5rem;
+    padding: .5rem;
+    border: 1px solid lightgray;
+    #recipe-text-container{
+        display: flex;
+        max-width: 20rem;
+        flex-direction: column;
+        justify-content: space-between;
+        #recipe-text-info{
+            display: flex;
+            
+        }
+    }
+        
+}

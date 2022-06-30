@@ -24,7 +24,7 @@ const Recipes = () => {
       itemsToExpireSoon += `${item.item.toLowerCase()} `;
     });
     load(itemsToExpireSoon);
-  }, [expiringItems]);
+  }, [items]);
 
   useEffect(() => {
     if (response) {
@@ -50,9 +50,11 @@ const Recipes = () => {
         It seems you have {expiringItems.length} items going off soon, care to
         try them on these recipes?{" "}
       </p>
-      {recipes.hits.map((item) => (
-        <RecipeCard recipe={item.recipe} key={recipes.hits.indexOf(item)} />
-      ))}
+      <div id="recipe-cards-container">
+        {recipes.hits.map((item) => (
+          <RecipeCard recipe={item.recipe} key={recipes.hits.indexOf(item)} />
+        ))}
+      </div>
     </div>
   );
 };
