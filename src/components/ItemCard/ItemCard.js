@@ -9,18 +9,18 @@ const ItemCard = ({ id, item, category, expiry }) => {
   const handleRemoveItem = () => {
     if (window.confirm(`Delete ${item} ?`)) removeItem(id);
   };
-
+  const daysToExpiry = daysLeft(expiry);
   return (
-    <div className="card">
+    <div className={daysToExpiry <= 2 ? "card expired" : "card"}>
       <div className="item-info">
         <button onClick={handleRemoveItem}>X</button>
         <h4>{item}</h4>
         <p>Category: {category}</p>
         <p>
           Expiry in:
-          <span style={{ color: daysLeft(expiry) <= 2 ? "red" : "black" }}>
+          <span style={{ color: daysToExpiry <= 2 ? "red" : "black" }}>
             {" "}
-            {daysLeft(expiry)}
+            {daysToExpiry}
           </span>{" "}
           days
         </p>

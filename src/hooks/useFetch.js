@@ -12,6 +12,7 @@ const useFetch = ({ fetchFn, immediate = false }) => {
     fetchFn(items)
       .then(($response) => {
         setResponse($response);
+        console.log($response);
       })
       .catch(($error) => {
         setError($error);
@@ -29,6 +30,7 @@ const useFetch = ({ fetchFn, immediate = false }) => {
 
   return {
     response,
+
     error,
     isLoading,
     load,

@@ -3,14 +3,13 @@ import React from "react";
 import "./RecipeCard.scss";
 
 const RecipeCard = ({ recipe }) => {
-  console.log(recipe);
   return (
     <div id="recipe-card">
       <div id="recipe-img-container">
         <img alt="recipe" src={recipe.images.SMALL.url} />
       </div>
       <div id="recipe-text-container">
-        <h1>{recipe.label}</h1>
+        <h2>{recipe.label}</h2>
         <div id="recipe-text-info">
           <div className="recipe-text">
             <h4>Calories</h4>
