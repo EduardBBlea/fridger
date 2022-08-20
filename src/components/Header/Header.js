@@ -1,17 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-import "./Header.scss";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Stack,
+  Button,
+  Menu,
+  MenuItem,
+  Link,
+} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 const Header = () => {
   return (
-    <div id="header">
-      <div id="link">
-        <Link to="/add">
-          <img src="./img/add.svg" alt="add icon" /> ADD TO FRIDGE
-        </Link>
-      </div>
-    </div>
+    <AppBar
+      position="static"
+      sx={{
+        borderBottomLeftRadius: "100px",
+        borderBottomRightRadius: "100px",
+      }}
+    >
+      <Toolbar>
+        <IconButton
+          href="/add"
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="add button"
+          sx={{
+            margin: "auto",
+          }}
+        >
+          <Stack direction="column">
+            <AddIcon sx={{ margin: "auto" }} />
+            <Typography variant="h6" component="div">
+              ADD
+            </Typography>
+          </Stack>
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };
 
