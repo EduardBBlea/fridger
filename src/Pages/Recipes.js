@@ -33,7 +33,9 @@ const Recipes = () => {
   }, [response]);
 
   if (items.length === 0) {
-    return <h1>No items in the fridge</h1>;
+    return (
+      <h2 className="empty-fridge-text">There's no items in your fridge!</h2>
+    );
   }
 
   if (error) {

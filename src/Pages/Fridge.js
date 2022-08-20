@@ -18,7 +18,7 @@ const Fridge = () => {
           />
         ))
       ) : (
-        <h2>There's no items in your fridge!</h2>
+        <h2 className="empty-fridge-text">There's no items in your fridge!</h2>
       )}
     </div>
   );

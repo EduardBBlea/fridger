@@ -3,8 +3,12 @@ import React from "react";
 import "./RecipeCard.scss";
 
 const RecipeCard = ({ recipe }) => {
+  const openInNewTab = (url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <div id="recipe-card">
+    <div id="recipe-card" onClick={() => openInNewTab(recipe.url)}>
       <div id="recipe-img-container">
         <img alt="recipe" src={recipe.images.SMALL.url} />
       </div>
