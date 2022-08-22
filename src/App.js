@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+
 import useGlobalState from "./hooks/useGlobalState";
 import { GlobalProvider } from "./contexts/GlobalContext";
 
@@ -31,7 +31,6 @@ const App = () => {
               <Route path="*" element={<NotFound />}></Route>
             </Routes>
           </div>
-          <Footer />
         </div>
       </BrowserRouter>
     </GlobalProvider>
